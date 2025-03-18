@@ -68,7 +68,21 @@ export default defineConfig((/* ctx */) => {
           },
           { server: false },
         ],
-        ['unplugin-vue-router/vite', {}],
+        [
+          'unplugin-vue-router/vite',
+          {
+            routesFolder: [
+              {
+                src: 'src/pages',
+              },
+              {
+                src: 'src/docs',
+                path: 'docs/',
+              },
+            ],
+            exclude: ['**/components/**'],
+          },
+        ],
       ],
     },
 
