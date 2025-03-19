@@ -1,5 +1,5 @@
 <template>
-  <q-layout view="hHh lpR fFf">
+  <q-layout view="lHh Lpr lff" class="bg-grey-2">
     <q-header bordered class="bg-white text-grey-9">
       <q-toolbar>
         <q-btn flat dense to="/">
@@ -43,8 +43,20 @@
       </q-toolbar>
     </q-header>
 
-    <q-page-container>
+    <q-page-container :style="pageContainerStyles">
       <router-view />
     </q-page-container>
   </q-layout>
 </template>
+
+<script setup>
+import { computed } from 'vue';
+import { useRoute } from 'vue-router';
+
+const route = useRoute();
+console.dir(route);
+const pageContainerStyles = computed(() => ({
+  maxWidth: route.meta?.width || '1080px',
+  margin: '0 auto',
+}));
+</script>
