@@ -10,7 +10,7 @@
         <q-space></q-space>
         <q-btn icon="close" flat round dense v-close-popup></q-btn>
       </q-card-section>
-      <q-card-section>
+      <q-card-section class="q-px-xl q-pb-xl">
         <SignInForm />
       </q-card-section>
     </q-card>
