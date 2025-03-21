@@ -16,11 +16,19 @@
         color="primary"
       ></q-btn>
       <q-separator />
-      <q-btn label="로그인하기" class="full-width" unelevated flat></q-btn>
+      <q-btn
+        label="로그인하기"
+        class="full-width"
+        unelevated
+        flat
+        @click="$emit('changeView', 'SignInForm')"
+      ></q-btn>
     </q-form>
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+defineEmits(['changeView']);
+</script>
 
 <style lang="scss" scoped></style>

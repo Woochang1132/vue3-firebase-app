@@ -11,18 +11,24 @@
         <q-btn icon="close" flat round dense v-close-popup></q-btn>
       </q-card-section>
       <q-card-section class="q-px-xl q-pb-xl">
-        <!-- <SignInForm /> -->
-        <!-- <SignUpForm /> -->
-        <FindPasswordForm />
+        <SignInForm
+          v-if="viewMode === 'SignInForm'"
+          @change-view="changeViewMode"
+        />
+        <SignUpForm
+          v-else-if="viewMode === 'SignUpForm'"
+          @change-view="changeViewMode"
+        />
+        <FindPasswordForm v-else @change-view="changeViewMode" />
       </q-card-section>
     </q-card>
   </q-dialog>
 </template>
 
 <script setup>
-// import SignInForm from './SignInForm.vue';
-// import SignUpForm from './SignUpForm.vue';
-// import { ref } from 'vue';
+import SignInForm from './SignInForm.vue';
+import SignUpForm from './SignUpForm.vue';
+import { ref } from 'vue';
 import FindPasswordForm from './FindPasswordForm.vue';
 
 defineProps({
@@ -33,7 +39,8 @@ defineProps({
 });
 defineEmits(['update:modelValue']);
 
-// const viewMode = ref('SignInForm'); // SignInForm, SignUpForm, FindPasswordForm
+const viewMode = ref('SignInForm'); // SignInForm, SignUpForm, FindPasswordForm
+const changeViewMode = mode => (viewMode.value = mode);
 </script>
 
 <style lang="scss" scoped></style>

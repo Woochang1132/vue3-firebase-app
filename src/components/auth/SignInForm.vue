@@ -18,6 +18,7 @@
             flat
             dense
             size="13px"
+            @click="$emit('changeView', 'FindPasswordForm')"
           ></q-btn>
           <q-btn
             label="이메일 가입하기"
@@ -25,6 +26,7 @@
             flat
             dense
             size="13px"
+            @click="$emit('changeView', 'SignUpForm')"
           ></q-btn>
         </div>
       </div>
@@ -40,6 +42,8 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+defineEmits(['changeView']);
+</script>
 
 <style lang="scss" scoped></style>
