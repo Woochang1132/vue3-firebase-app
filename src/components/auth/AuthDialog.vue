@@ -4,6 +4,7 @@
     @update:model-value="val => $emit('update:modelValue', val)"
     transition-show="none"
     transition-hide="none"
+    @hide="changeViewMode('SignInForm')"
   >
     <q-card :style="{ width: '400px' }">
       <q-card-section class="flex">
@@ -34,10 +35,10 @@
 </template>
 
 <script setup>
-import SignInForm from './SignInForm.vue';
-import SignUpForm from './SignUpForm.vue';
-import FindPasswordForm from './FindPasswordForm.vue';
-import { ref } from 'vue';
+// import SignInForm from './SignInForm.vue';
+// import SignUpForm from './SignUpForm.vue';
+// import FindPasswordForm from './FindPasswordForm.vue';
+import { defineAsyncComponent, ref } from 'vue';
 
 defineProps({
   modelValue: {
@@ -50,10 +51,18 @@ defineEmits(['update:modelValue']);
 const viewMode = ref('SignInForm'); // SignInForm, SignUpForm, FindPasswordForm
 const changeViewMode = mode => (viewMode.value = mode);
 
+// const authViewComponents = {
+//   SignInForm,
+//   SignUpForm,
+//   FindPasswordForm,
+// };
+
 const authViewComponents = {
-  SignInForm,
-  SignUpForm,
-  FindPasswordForm,
+  SignInForm: defineAsyncComponent(() => import('./SignInForm.vue')),
+  SignUpForm: defineAsyncComponent(() => import('./SignUpForm.vue')),
+  FindPasswordForm: defineAsyncComponent(
+    () => import('./FindPasswordForm.vue'),
+  ),
 };
 </script>
 
