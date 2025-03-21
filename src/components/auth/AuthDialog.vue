@@ -11,6 +11,8 @@
         <q-btn icon="close" flat round dense v-close-popup></q-btn>
       </q-card-section>
       <q-card-section class="q-px-xl q-pb-xl">
+        <!-- v-if 조건부 렌더링 -->
+        <!--
         <SignInForm
           v-if="viewMode === 'SignInForm'"
           @change-view="changeViewMode"
@@ -20,6 +22,12 @@
           @change-view="changeViewMode"
         />
         <FindPasswordForm v-else @change-view="changeViewMode" />
+        -->
+        <!-- 동적 컴포넌트 -->
+        <component
+          :is="authViewComponents[viewMode]"
+          @change-view="changeViewMode"
+        />
       </q-card-section>
     </q-card>
   </q-dialog>
@@ -28,8 +36,8 @@
 <script setup>
 import SignInForm from './SignInForm.vue';
 import SignUpForm from './SignUpForm.vue';
-import { ref } from 'vue';
 import FindPasswordForm from './FindPasswordForm.vue';
+import { ref } from 'vue';
 
 defineProps({
   modelValue: {
@@ -41,6 +49,12 @@ defineEmits(['update:modelValue']);
 
 const viewMode = ref('SignInForm'); // SignInForm, SignUpForm, FindPasswordForm
 const changeViewMode = mode => (viewMode.value = mode);
+
+const authViewComponents = {
+  SignInForm,
+  SignUpForm,
+  FindPasswordForm,
+};
 </script>
 
 <style lang="scss" scoped></style>
