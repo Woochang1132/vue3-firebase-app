@@ -1,11 +1,6 @@
 <template>
   <q-list bordered separator>
-    <PostItem
-      v-for="item in items"
-      :key="item.id"
-      :id="item.id"
-      :title="item.title"
-    />
+    <PostItem v-for="item in items" :key="item.id" v-bind="item" />
   </q-list>
 </template>
 
