@@ -1,9 +1,13 @@
 <template>
   <q-page padding>
     <div class="text-h4">커뮤니티 목록</div>
-    <section class="q-gutter-y-sm q-mt-lg">
-      <PostList :items="posts"></PostList>
-    </section>
+    <div class="row q-col-gutter-x-lg">
+      <aside class="col-grow bg-yellow"></aside>
+      <section class="col-7">
+        <PostList :items="posts"></PostList>
+      </section>
+      <aside class="col-3 bg-yellow"></aside>
+    </div>
   </q-page>
 </template>
 
