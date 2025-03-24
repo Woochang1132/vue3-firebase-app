@@ -1,5 +1,5 @@
 <template>
-  <aside>
+  <StickySideBar>
     <q-btn unelevated color="primary" text-color="white" class="full-width">
       <q-avatar class="q-mr-sm" color="white" text-color="primary" size="22px">
         <q-icon name="edit" size="14px"></q-icon>
@@ -53,10 +53,11 @@
         </q-item>
       </q-list>
     </q-card>
-  </aside>
+  </StickySideBar>
 </template>
 
 <script setup>
+import StickySideBar from 'src/components/StickySideBar.vue';
 import { ref } from 'vue';
 
 const tags = ref([
