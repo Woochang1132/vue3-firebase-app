@@ -21,7 +21,7 @@ import PostWriteDialog from 'src/components/apps/post/PostWriteDialog.vue';
 import { ref } from 'vue';
 
 const posts = Array.from(Array(20), (_, index) => ({
-  id: index,
+  id: 'A' + index,
   title: 'Vue3 Firebase 강의' + index,
   content:
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi est voluptatum sint corrupti nobis iusto aut temporibus tempora, quas molestiae officia quibusdam consectetur vero necessitatibus optio nesciunt fuga odio minima.',
